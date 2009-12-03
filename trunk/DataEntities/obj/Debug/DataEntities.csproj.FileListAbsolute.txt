@@ -1,5 +1,0 @@
-W:\Projects\Codebits\SocialBrowser\DataEntities\Bin\Debug\DataEntities.dll
-W:\Projects\Codebits\SocialBrowser\DataEntities\Bin\Debug\DataEntities.pdb
-W:\Projects\Codebits\SocialBrowser\DataEntities\obj\Debug\ResolveAssemblyReference.cache
-W:\Projects\Codebits\SocialBrowser\DataEntities\obj\Debug\DataEntities.dll
-W:\Projects\Codebits\SocialBrowser\DataEntities\obj\Debug\DataEntities.pdb
