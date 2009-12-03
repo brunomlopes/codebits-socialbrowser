@@ -1,5 +1,0 @@
-W:\Projects\Codebits\SocialBrowser\DataLayer\Bin\Debug\DataLayer.dll
-W:\Projects\Codebits\SocialBrowser\DataLayer\Bin\Debug\DataLayer.pdb
-W:\Projects\Codebits\SocialBrowser\DataLayer\obj\Debug\ResolveAssemblyReference.cache
-W:\Projects\Codebits\SocialBrowser\DataLayer\obj\Debug\DataLayer.dll
-W:\Projects\Codebits\SocialBrowser\DataLayer\obj\Debug\DataLayer.pdb
