@@ -1,5 +1,0 @@
-W:\Projects\Codebits\SocialBrowser\SoBrow.Web\bin\SoBrow.Web.dll
-W:\Projects\Codebits\SocialBrowser\SoBrow.Web\bin\SoBrow.Web.pdb
-W:\Projects\Codebits\SocialBrowser\SoBrow.Web\obj\Debug\ResolveAssemblyReference.cache
-W:\Projects\Codebits\SocialBrowser\SoBrow.Web\obj\Debug\SoBrow.Web.dll
-W:\Projects\Codebits\SocialBrowser\SoBrow.Web\obj\Debug\SoBrow.Web.pdb
