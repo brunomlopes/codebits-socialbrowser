@@ -1,1 +1,0 @@
-W:\Projects\Codebits\SocialBrowser\SoBrow.Web\SoBrow.Web.csproj,633954692696019618,Properties\AssemblyInfo.cs,
