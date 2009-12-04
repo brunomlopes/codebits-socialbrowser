@@ -4,9 +4,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="300" d:DesignWidth="400" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input">
 
     <Grid x:Name="LayoutRoot" Background="White">
-
+        <controls:TabControl Height="100" HorizontalAlignment="Left" Margin="136,162,0,0" Name="tabControl1" VerticalAlignment="Top" Width="200">
+            <controls:TabItem Header="tabItem1" Name="tabItem1">
+                <Grid />
+            </controls:TabItem>
+        </controls:TabControl>
+        <dataInput:Label Height="28" HorizontalAlignment="Left" Margin="66,155,0,0" Name="label1" VerticalAlignment="Top" Width="120" />
     </Grid>
 </UserControl>
