@@ -1,14 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace DataEntities
 {
@@ -29,8 +19,9 @@ namespace DataEntities
         protected string _Twitter;
         public string Twitter { get { return _Twitter; } set { _Twitter = value; } }
 
-        protected List<Skill> _Skills;
-        public List<Skill> Skills {
+        protected IEnumerable<Skill> _Skills;
+        public IEnumerable<Skill> Skills
+        {
             get {
                 if (_Skills == null) {
                     _Skills = new List<Skill>();
@@ -44,8 +35,9 @@ namespace DataEntities
         
         }
 
-        protected List<Profile> _Friends;
-        public List<Profile> Friends
+        protected IEnumerable<Profile> _Friends;
+
+        public IEnumerable<Profile> Friends
         {
             get
             {
@@ -62,7 +54,16 @@ namespace DataEntities
             }
 
         }
-    }
 
-    
+        private Project _Project;
+        public Project Project
+        {
+            get {
+                return _Project;
+            }
+            set {
+                _Project = value;
+            }
+        }
+    }
 }
