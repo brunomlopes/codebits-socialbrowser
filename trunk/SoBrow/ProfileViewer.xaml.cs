@@ -21,7 +21,7 @@ namespace SoBrow
         }
 
         protected Profile _DataSource;
-        public Profile DataSource {
+        public  Profile DataSource {
             get {
                 return _DataSource;
             }
@@ -32,9 +32,40 @@ namespace SoBrow
             }
         }
 
-        protected void LoadControlsFromDataSource { 
-        
+        protected void LoadControlsFromDataSource() {
 
+            lblName.Content = _DataSource.Name;
+            lblBlog.Content = _DataSource.Blog;
+            lblTwitter.Content = _DataSource.Twitter;
+
+            lstSkill.Children.Clear();
+
+            if (_DataSource.Skills != null) {
+
+                foreach (Skill mySkill in _DataSource.Skills)
+                {
+                    Label mySkillLabel = new Label();
+                    mySkillLabel.Content = mySkill.Name;
+
+                    lstSkill.Children.Add(mySkillLabel);
+                }
+            }
+
+            if (_DataSource.Project != null) {
+                lblProjectTitle.Content = _DataSource.Project.ProjectName;
+                lblProjectDescription.Content = _DataSource.Project.Description;
+            }
+
+            if (!string.IsNullOrEmpty(_DataSource.Twitter))
+            {
+                lblTwitter.Content = _DataSource.Twitter;
+
+
+            }
+            else {
+                lblTwitter.Content = string.Empty;
+            }
+            
         }
     }
 }
