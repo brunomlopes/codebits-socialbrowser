@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using DataEntities;
 
 namespace SoBrow
 {
@@ -17,6 +18,23 @@ namespace SoBrow
         public ProfileViewer()
         {
             InitializeComponent();
+        }
+
+        protected Profile _DataSource;
+        public Profile DataSource {
+            get {
+                return _DataSource;
+            }
+            set {
+                _DataSource = value;
+
+                LoadControlsFromDataSource();
+            }
+        }
+
+        protected void LoadControlsFromDataSource { 
+        
+
         }
     }
 }

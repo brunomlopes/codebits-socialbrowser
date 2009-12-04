@@ -1,12 +1,37 @@
 ﻿<UserControl x:Class="SoBrow.ProfileViewer"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
-    
-    <Grid x:Name="LayoutRoot" Background="White">
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+	xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+	Width="583" Height="216" mc:Ignorable="d">
 
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Canvas Margin="8">
+            <Image Height="100" Width="100" Canvas.Left="8" Canvas.Top="8" Source="http://www.gravatar.com/avatar/90a4b5eefa4fdaf4d1babf713b295a11.jpg"/>
+            <controls:TabControl Height="182" Width="445" Canvas.Left="112" Canvas.Top="8">
+                <controls:TabItem Header="Profile">
+                    <Grid>
+                        <dataInput:Label HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Content="Name:"/>
+                        <dataInput:Label x:Name="lblName" Margin="66,8,6,0" Content="Paulo Jorge Iap Correia" VerticalAlignment="Top" Height="16"/>
+                        <dataInput:Label HorizontalAlignment="Left" Margin="8,28,0,0" VerticalAlignment="Top" Content="Blog:"/>
+                        <dataInput:Label x:Name="lblBlog" Margin="66,28,6,0" Content="http://weblogs.pontonetpt.com/paulo_iap" Height="16" VerticalAlignment="Top"/>
+                        <dataInput:Label HorizontalAlignment="Left" Margin="8,48,0,0" VerticalAlignment="Top" Content="Twitter:"/>
+                        <dataInput:Label x:Name="lblTwitter" Margin="66,48,6,0" Content="http://twitter.com/paulo_iap" Height="16" VerticalAlignment="Top"/>
+                        <StackPanel Canvas.Left="148" Canvas.Top="105" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="8,68,8,8"/>
+                    </Grid>
+                </controls:TabItem>
+                <controls:TabItem Header="Sessions">
+                    <Grid>
+                        <StackPanel Canvas.Left="148" Canvas.Top="105" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="8,68,8,8"/>
+                    </Grid>
+                </controls:TabItem>
+            </controls:TabControl>
+
+        </Canvas>
     </Grid>
 </UserControl>
