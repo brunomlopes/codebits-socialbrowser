@@ -4,42 +4,43 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
-	xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" mc:Ignorable="d" Height="216" Width="482">
+	xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" mc:Ignorable="d" Height="216" Width="482"
+    xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit">
 
     <Grid x:Name="LayoutRoot" Background="White" Width="479">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Canvas Margin="8,8,111,8">
-            <Rectangle Width="463" Height="200" Fill="Aqua"></Rectangle>
-            <Image Height="100" Width="100" Canvas.Left="8" Canvas.Top="8" Source="http://www.gravatar.com/avatar/90a4b5eefa4fdaf4d1babf713b295a11.jpg"/>
-            <controls:TabControl Height="182" Width="340" Canvas.Left="112" Canvas.Top="8">
-                <controls:TabItem Header="Profile">
-                    <Grid>
-                        <dataInput:Label HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Content="Name:"/>
-                        <dataInput:Label x:Name="lblName" Content="Paulo Jorge Iap Correia" VerticalAlignment="Top" Height="16" Width="262" HorizontalAlignment="Left" Margin="58,8,0,0" />
-                        <dataInput:Label HorizontalAlignment="Left" Margin="8,28,0,0" VerticalAlignment="Top" Content="Blog:"/>
-                        <dataInput:Label x:Name="lblBlog" Content="http://weblogs.pontonetpt.com/paulo_iap" Height="16" VerticalAlignment="Top" Width="262" HorizontalAlignment="Left" Margin="58,28,0,0" />
-                        <dataInput:Label HorizontalAlignment="Left" Margin="8,48,0,0" VerticalAlignment="Top" Content="Twitter:"/>
-                        <dataInput:Label x:Name="lblTwitter" Content="http://twitter.com/paulo_iap" Height="16" VerticalAlignment="Top" Width="262" HorizontalAlignment="Left" Margin="58,48,0,0" />
-                        <StackPanel x:Name="lstSkill" Canvas.Left="148" Canvas.Top="105" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="8,68,8,8"/>
-                    </Grid>
-                </controls:TabItem>
-                <controls:TabItem Header="Project">
-                    <Grid>
-                        <dataInput:Label x:Name="lblProjectTitle" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Content="Name:" Width="314" FontWeight="Bold" />
-                        <dataInput:Label x:Name="lblProjectDescription" Content="Paulo Jorge Iap Correia" VerticalAlignment="Top" Height="109" Width="314" HorizontalAlignment="Left" Margin="8,30,0,0" />
-                    </Grid>
-                </controls:TabItem>
-                <controls:TabItem Header="Tweets">
-                    <Grid>
-                        <ListBox Margin="8" x:Name="lstTweets">
-                            
-                        </ListBox>
-                    </Grid>
-                </controls:TabItem>
-            </controls:TabControl>
-           
-        </Canvas>
+        <layoutToolkit:LayoutTransformer  Width="463" Height="200" HorizontalAlignment="Left" Margin="99,89,0,0" Name="layoutTransformer1" VerticalAlignment="Top" >
+            <Canvas Margin="8,8,111,8">
+
+                <Rectangle Width="463" Height="200" Fill="Aqua"></Rectangle>
+                <Image Height="100" Width="100" Canvas.Left="8" Canvas.Top="8" Source="http://www.gravatar.com/avatar/90a4b5eefa4fdaf4d1babf713b295a11.jpg"/>
+                <controls:TabControl Height="182" Width="340" Canvas.Left="112" Canvas.Top="8">
+                    <controls:TabItem Header="Profile">
+                        <Grid>
+                            <dataInput:Label HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Content="Name:"/>
+                            <dataInput:Label x:Name="lblName" Content="Paulo Jorge Iap Correia" VerticalAlignment="Top" Height="16" Width="262" HorizontalAlignment="Left" Margin="58,8,0,0" />
+                            <dataInput:Label HorizontalAlignment="Left" Margin="8,28,0,0" VerticalAlignment="Top" Content="Blog:"/>
+                            <dataInput:Label x:Name="lblBlog" Content="http://weblogs.pontonetpt.com/paulo_iap" Height="16" VerticalAlignment="Top" Width="262" HorizontalAlignment="Left" Margin="58,28,0,0" />
+                            <dataInput:Label HorizontalAlignment="Left" Margin="8,48,0,0" VerticalAlignment="Top" Content="Twitter:"/>
+                            <dataInput:Label x:Name="lblTwitter" Content="http://twitter.com/paulo_iap" Height="16" VerticalAlignment="Top" Width="262" HorizontalAlignment="Left" Margin="58,48,0,0" />
+                            <StackPanel x:Name="lstSkill" Canvas.Left="148" Canvas.Top="105" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="8,68,8,8"/>
+                        </Grid>
+                    </controls:TabItem>
+                    <controls:TabItem Header="Project">
+                        <Grid>
+                            <dataInput:Label x:Name="lblProjectTitle" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Content="Name:" Width="314" FontWeight="Bold" />
+                            <dataInput:Label x:Name="lblProjectDescription" Content="Paulo Jorge Iap Correia" VerticalAlignment="Top" Height="109" Width="314" HorizontalAlignment="Left" Margin="8,30,0,0" />
+                        </Grid>
+                    </controls:TabItem>
+                    <controls:TabItem Header="Tweets">
+                        <Grid>
+                            <ListBox Margin="8" x:Name="lstTweets">
+
+                            </ListBox>
+                        </Grid>
+                    </controls:TabItem>
+                </controls:TabControl>
+
+            </Canvas>
+        </layoutToolkit:LayoutTransformer>
     </Grid>
 </UserControl>
