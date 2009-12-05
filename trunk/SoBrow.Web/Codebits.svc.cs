@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
 using DataLayer;
 
 namespace SoBrow.Web
 {
-    public class Codebits : ICodebits
+    [ServiceContract(Namespace = "")]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    public class Codebits
     {
-        private IOperations Operations;
-
-        public Codebits(IOperations operations)
-        {
-            Operations = operations;
-        }
+        private Operations Operations;
 
         public Codebits()
         {
-            Operations = new Operations();
+            this.Operations = new Operations();
         }
 
-        public IEnumerable<ProfileView> GetUserProfiles(IEnumerable<int> profileUids)
+        [OperationContract]
+        public ProfileView GetUserProfile(string uid)
         {
-            return profileUids.Select(uid => new ProfileView(Operations.GetProfileForUid(uid)));
-        }
-
-        public ProfileView GetUserProfile(int uid)
-        {
-            return new ProfileView(Operations.GetProfileForUid(uid));
+            return new ProfileView(this.Operations.GetProfileForUid(uid));
         }
     }
 }

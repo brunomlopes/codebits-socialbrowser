@@ -9,21 +9,20 @@ namespace DataLayer
 {
     public interface IOperations
     {
-        Profile GetProfileForUid(int uid); 
+        Profile GetProfileForUid(string uid); 
     }
 
     public class Operations : IOperations
     {
-        private const string userUrlPath = "/intra/s/user/";
         private const string baseUrl = "http://codebits.eu";
-        private Dictionary<int, Profile> profileCache;
+        private Dictionary<string, Profile> profileCache;
 
         public Operations()
         {
-            profileCache = new Dictionary<int, Profile>();
+            profileCache = new Dictionary<string, Profile>();
         }
 
-        public Profile GetProfileForUid(int uid)
+        public Profile GetProfileForUid(string uid)
         {
             if (!profileCache.ContainsKey(uid))
             {
@@ -32,14 +31,15 @@ namespace DataLayer
             return profileCache[uid];
         }
 
-        private Profile LoadProfileFromSite(int uid)
+        private Profile LoadProfileFromSite(string uid)
         {
-            var page = new WebClient().DownloadString(string.Format("{0}{1}{2}", baseUrl, userUrlPath, uid));
             var scraper = new HtmlDocument();
+            var page = new WebClient().DownloadString(baseUrl + "/" + uid);
             scraper.LoadHtml(page);
 
             var profile = new Profile();
             HtmlNode card = scraper.DocumentNode.SelectSingleNode("//div[@class='vcard']");
+            profile.ID = uid;
             profile.Name = card.TextInNode("//p[@id='u_name']");
             profile.Blog = card.TextInNode("//p[@id='u_blog']/a");
             profile.PhotoUrl = card.SelectSingleNode("//img[@class='photo']").Attributes["src"].Value;
@@ -47,11 +47,10 @@ namespace DataLayer
             profile.Twitter = card.TextInNode("//p[@id='u_twitter']/a").Replace("http://twitter.com/","");
 
             profile.Skills = card.SelectNodes("//p[@id='u_skills']/a").Select(node => new Skill(node.InnerText));
-            profile.Friends = card
-                .SelectNodes("//p[@class='friends']").DescendantNodes()
-                .Where(node => node.Name =="a" && node.Attributes["href"].Value.StartsWith(userUrlPath))
-                .Select(node => node.Attributes["href"].Value.Replace(userUrlPath, ""))
-                .Select(friendUid => GetProfileForUid(int.Parse(friendUid)));
+            profile.Friends = (card
+                .SelectNodes("//a[@rel='contact']") ?? new HtmlNodeCollection(card))
+                .Select(node => node.Attributes["href"].Value.Replace("/", ""))
+                .Select(friendUid => GetProfileForUid(friendUid));
 
             var projectNode = scraper.DocumentNode.SelectNodes("//p")
                 .SingleOrDefault(n => n.ChildNodes

@@ -8,15 +8,16 @@ namespace SoBrow.Web
     [Serializable]
     public class ProfileView
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string PhotoUrl { get; set; }
-        public string Blog { get; set; }
-        public string Twitter { get; set; }
-        public IEnumerable<string> Skills { get; set; }
+        public string ID;
+        public string Name;
+        public string PhotoUrl;
+        public string Blog;
+        public string Twitter;
+        public string[] Skills;
 
-        public IEnumerable<int> FriendUids { get; set; }
-        public string Project { get; set; }
+        public string[] FriendUids;
+        public string ProjectName;
+        public string ProjectDescription;
 
         public ProfileView(Profile profile)
         {
@@ -26,9 +27,10 @@ namespace SoBrow.Web
             Blog = profile.Blog;
             Twitter = profile.Twitter;
 
-            Skills = profile.Skills.Select(s => s.Name);
-            FriendUids = profile.Friends.Select(f => f.ID);
-            Project = profile.Project.ProjectName;
+            Skills = profile.Skills.Select(s => s.Name).ToArray();
+            FriendUids = profile.Friends.Select(f => f.ID).ToArray();
+            ProjectName = profile.Project.ProjectName;
+            ProjectDescription = profile.Project.Description;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TestHarness
         static void Main(string[] args)
         {
             var operations = new Operations();
-            var profile = operations.GetProfileForUid(506);
+            var profile = operations.GetProfileForUid("brunomlopes");
 
             printProfile(profile);
             foreach (var friend in profile.Friends)

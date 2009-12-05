@@ -4,8 +4,8 @@ namespace DataEntities
 {
     public class Profile
     {
-        protected int _ID;
-        public int ID { get { return _ID; } set { _ID = value; } }
+        protected string _ID;
+        public string ID { get { return _ID; } set { _ID = value; } }
 
         protected string _Name;
         public string Name { get { return _Name; } set { _Name = value; } }

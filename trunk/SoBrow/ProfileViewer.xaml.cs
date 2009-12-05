@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using DataEntities;
+﻿using System.Windows.Controls;
+using SoBrow.CodebitsService;
 
 namespace SoBrow
 {
@@ -20,8 +10,9 @@ namespace SoBrow
             InitializeComponent();
         }
 
-        protected Profile _DataSource;
-        public  Profile DataSource {
+        protected ProfileView _DataSource;
+        public ProfileView DataSource
+        {
             get {
                 return _DataSource;
             }
@@ -42,30 +33,19 @@ namespace SoBrow
 
             if (_DataSource.Skills != null) {
 
-                foreach (Skill mySkill in _DataSource.Skills)
+                foreach (string mySkill in _DataSource.Skills)
                 {
                     Label mySkillLabel = new Label();
-                    mySkillLabel.Content = mySkill.Name;
+                    mySkillLabel.Content = mySkill;
 
                     lstSkill.Children.Add(mySkillLabel);
                 }
             }
 
-            if (_DataSource.Project != null) {
-                lblProjectTitle.Content = _DataSource.Project.ProjectName;
-                lblProjectDescription.Content = _DataSource.Project.Description;
-            }
+            lblProjectTitle.Content = _DataSource.ProjectName ?? "";
+            lblProjectDescription.Content = _DataSource.ProjectDescription ?? "";
 
-            if (!string.IsNullOrEmpty(_DataSource.Twitter))
-            {
-                lblTwitter.Content = _DataSource.Twitter;
-
-
-            }
-            else {
-                lblTwitter.Content = string.Empty;
-            }
-            
+            lblTwitter.Content = _DataSource.Twitter ?? "";
         }
     }
 }
