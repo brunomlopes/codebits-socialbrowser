@@ -173,6 +173,11 @@ namespace SoBrow.CodebitsService {
         System.IAsyncResult BeginGetUserProfile(string uid, System.AsyncCallback callback, object asyncState);
         
         SoBrow.CodebitsService.ProfileView EndGetUserProfile(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:Codebits/GetUsersProfile", ReplyAction="urn:Codebits/GetUsersProfileResponse")]
+        System.IAsyncResult BeginGetUsersProfile(System.Collections.ObjectModel.Collection<string> uids, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView> EndGetUsersProfile(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -200,6 +205,25 @@ namespace SoBrow.CodebitsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUsersProfileCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUsersProfileCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class CodebitsClient : System.ServiceModel.ClientBase<SoBrow.CodebitsService.Codebits>, SoBrow.CodebitsService.Codebits {
         
         private BeginOperationDelegate onBeginGetUserProfileDelegate;
@@ -207,6 +231,12 @@ namespace SoBrow.CodebitsService {
         private EndOperationDelegate onEndGetUserProfileDelegate;
         
         private System.Threading.SendOrPostCallback onGetUserProfileCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUsersProfileDelegate;
+        
+        private EndOperationDelegate onEndGetUsersProfileDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUsersProfileCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -263,6 +293,8 @@ namespace SoBrow.CodebitsService {
         
         public event System.EventHandler<GetUserProfileCompletedEventArgs> GetUserProfileCompleted;
         
+        public event System.EventHandler<GetUsersProfileCompletedEventArgs> GetUsersProfileCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
@@ -311,6 +343,52 @@ namespace SoBrow.CodebitsService {
             }
             base.InvokeAsync(this.onBeginGetUserProfileDelegate, new object[] {
                         uid}, this.onEndGetUserProfileDelegate, this.onGetUserProfileCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SoBrow.CodebitsService.Codebits.BeginGetUsersProfile(System.Collections.ObjectModel.Collection<string> uids, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUsersProfile(uids, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView> SoBrow.CodebitsService.Codebits.EndGetUsersProfile(System.IAsyncResult result) {
+            return base.Channel.EndGetUsersProfile(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUsersProfile(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Collections.ObjectModel.Collection<string> uids = ((System.Collections.ObjectModel.Collection<string>)(inValues[0]));
+            return ((SoBrow.CodebitsService.Codebits)(this)).BeginGetUsersProfile(uids, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUsersProfile(System.IAsyncResult result) {
+            System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView> retVal = ((SoBrow.CodebitsService.Codebits)(this)).EndGetUsersProfile(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUsersProfileCompleted(object state) {
+            if ((this.GetUsersProfileCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUsersProfileCompleted(this, new GetUsersProfileCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUsersProfileAsync(System.Collections.ObjectModel.Collection<string> uids) {
+            this.GetUsersProfileAsync(uids, null);
+        }
+        
+        public void GetUsersProfileAsync(System.Collections.ObjectModel.Collection<string> uids, object userState) {
+            if ((this.onBeginGetUsersProfileDelegate == null)) {
+                this.onBeginGetUsersProfileDelegate = new BeginOperationDelegate(this.OnBeginGetUsersProfile);
+            }
+            if ((this.onEndGetUsersProfileDelegate == null)) {
+                this.onEndGetUsersProfileDelegate = new EndOperationDelegate(this.OnEndGetUsersProfile);
+            }
+            if ((this.onGetUsersProfileCompletedDelegate == null)) {
+                this.onGetUsersProfileCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUsersProfileCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUsersProfileDelegate, new object[] {
+                        uids}, this.onEndGetUsersProfileDelegate, this.onGetUsersProfileCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -399,6 +477,19 @@ namespace SoBrow.CodebitsService {
             public SoBrow.CodebitsService.ProfileView EndGetUserProfile(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 SoBrow.CodebitsService.ProfileView _result = ((SoBrow.CodebitsService.ProfileView)(base.EndInvoke("GetUserProfile", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUsersProfile(System.Collections.ObjectModel.Collection<string> uids, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = uids;
+                System.IAsyncResult _result = base.BeginInvoke("GetUsersProfile", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView> EndGetUsersProfile(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView> _result = ((System.Collections.ObjectModel.Collection<SoBrow.CodebitsService.ProfileView>)(base.EndInvoke("GetUsersProfile", _args, result)));
                 return _result;
             }
         }

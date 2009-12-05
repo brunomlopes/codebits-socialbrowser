@@ -15,4 +15,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProfileView" nillable="true" type="tns:ProfileView" />
+  <xs:complexType name="ArrayOfProfileView">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProfileView" nillable="true" type="tns:ProfileView" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProfileView" nillable="true" type="tns:ArrayOfProfileView" />
 </xs:schema>

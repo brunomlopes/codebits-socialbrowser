@@ -4,9 +4,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="292" d:DesignWidth="529" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input">
-
-    <Grid x:Name="LayoutRoot" Background="White">
-        
-    </Grid>
+    d:DesignHeight="589" d:DesignWidth="815" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input">
+    <StackPanel x:Name="LayoutRoot" Orientation="Vertical" HorizontalAlignment="Center" Width="815" Height="584"></StackPanel>
 </UserControl>

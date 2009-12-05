@@ -23,5 +23,11 @@ namespace SoBrow.Web
         {
             return new ProfileView(this.Operations.GetProfileForUid(uid));
         }
+
+        [OperationContract(Name="GetUsersProfile")]
+        public ProfileView[] GetUserProfile(string[] uids)
+        {
+            return uids.Select(uid => new ProfileView(this.Operations.GetProfileForUid(uid))).ToArray();
+        }
     }
 }
