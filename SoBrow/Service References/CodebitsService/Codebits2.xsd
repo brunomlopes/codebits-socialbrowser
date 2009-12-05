@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SoBrow.Web" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SoBrow.Web" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:42773/Codebits.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ProfileView">
+    <xs:sequence>
+      <xs:element name="Blog" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="FriendUids" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element name="ID" nillable="true" type="xs:string" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="PhotoUrl" nillable="true" type="xs:string" />
+      <xs:element name="ProjectDescription" nillable="true" type="xs:string" />
+      <xs:element name="ProjectName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="Skills" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element name="Twitter" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProfileView" nillable="true" type="tns:ProfileView" />
+</xs:schema>

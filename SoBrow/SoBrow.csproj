@@ -84,6 +84,11 @@
       <DependentUpon>ProfileViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\CodebitsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="SocialListItem.xaml.cs">
       <DependentUpon>SocialListItem.xaml</DependentUpon>
     </Compile>
@@ -108,18 +113,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataEntities\DataEntities.csproj">
-      <Project>{504C60D0-C200-4651-8F50-4595E316F236}</Project>
-      <Name>DataEntities</Name>
-    </ProjectReference>
+    <None Include="Service References\CodebitsService\Codebits.wsdl" />
+    <None Include="Service References\CodebitsService\Codebits.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodebitsService\Codebits1.wsdl" />
+    <None Include="Service References\CodebitsService\Codebits1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodebitsService\Codebits2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodebitsService\Codebits3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodebitsService\SoBrow.CodebitsService.ProfileView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\OutOfBrowserSettings.xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CodebitsService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodebitsService\Codebits.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodebitsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodebitsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodebitsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
