@@ -14,10 +14,20 @@
   <wsdl:message name="Codebits_GetUserProfile_OutputMessage">
     <wsdl:part name="parameters" element="GetUserProfileResponse" />
   </wsdl:message>
+  <wsdl:message name="Codebits_GetUsersProfile_InputMessage">
+    <wsdl:part name="parameters" element="GetUsersProfile" />
+  </wsdl:message>
+  <wsdl:message name="Codebits_GetUsersProfile_OutputMessage">
+    <wsdl:part name="parameters" element="GetUsersProfileResponse" />
+  </wsdl:message>
   <wsdl:portType name="Codebits">
     <wsdl:operation name="GetUserProfile">
       <wsdl:input wsaw:Action="urn:Codebits/GetUserProfile" message="Codebits_GetUserProfile_InputMessage" />
       <wsdl:output wsaw:Action="urn:Codebits/GetUserProfileResponse" message="Codebits_GetUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersProfile">
+      <wsdl:input wsaw:Action="urn:Codebits/GetUsersProfile" message="Codebits_GetUsersProfile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:Codebits/GetUsersProfileResponse" message="Codebits_GetUsersProfile_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

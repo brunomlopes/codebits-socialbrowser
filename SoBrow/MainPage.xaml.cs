@@ -17,17 +17,18 @@ namespace SoBrow
 {
     public partial class MainPage : UserControl
     {
-        private CodebitsClient _client;
+        private double currentPosition;
 
         public MainPage()
         {
             InitializeComponent();
             LoadProfile();
+            currentPosition = 0;
         }
 
         public void LoadProfile()
         {
-            _client = new CodebitsClient();
+            var _client = new CodebitsClient();
             _client.GetUserProfileCompleted += client_GetUserProfileCompleted;
             _client.GetUserProfileAsync("brunomlopes", _client);
         }
@@ -36,8 +37,44 @@ namespace SoBrow
         {
             var profileViewer = new ProfileViewer();
             profileViewer.DataSource = e.Result;
-            LayoutRoot.Children.Add(profileViewer);
+            LayoutProfile(profileViewer);
+            currentPosition += profileViewer.Height;
+
+            var codebitsClient = (e.UserState as CodebitsClient);
+            codebitsClient.CloseCompleted += (sndr, e1) =>
+                                                 {
+                                                     var client = new CodebitsClient();
+                                                     client.GetUsersProfileCompleted +=
+                                                         client_GetUserProfileFriendsCompleted;
+                                                     client.GetUsersProfileAsync(e.Result.FriendUids, client);
+                                                 };
+            codebitsClient.CloseAsync();
+        }
+
+        private void client_GetUserProfileFriendsCompleted(object sender, GetUsersProfileCompletedEventArgs e)
+        {
+            var i = 0.0;
+            var panel = new StackPanel()
+                            {
+                                FlowDirection = FlowDirection.LeftToRight,
+                                Orientation = Orientation.Horizontal
+                            };
+            var viewers = e.Result.Select(profileView => new ProfileViewer() {DataSource = profileView});
+            foreach (var profileView in viewers)
+            {
+                panel.Children.Add(profileView);
+            }
+            LayoutProfile(panel, currentPosition, 300, 0.5);
             (e.UserState as CodebitsClient).CloseAsync();
+        }
+
+        private void LayoutProfile(UIElement profileViewer, double x = 0, double y = 0, double scale = 1)
+        {
+            var transforms = new TransformGroup();
+            transforms.Children.Add(new ScaleTransform() { ScaleX = scale, ScaleY = scale });
+            transforms.Children.Add(new TranslateTransform(){X = x, Y = y});
+            profileViewer.RenderTransform = transforms;
+            LayoutRoot.Children.Add(profileViewer);
         }
     }
 }
